@@ -1,0 +1,24 @@
+def caesar_cipher_decrypt(ciphertext, key):
+    decrypted_text = ""
+    for char in ciphertext:
+        if char.isalpha():  
+            if char.islower():
+                decrypted_text += chr((ord(char) - ord('a') - key) % 26 + ord('a'))
+            else:
+                decrypted_text += chr((ord(char) - ord('A') - key) % 26 + ord('A'))
+        else:
+            decrypted_text += char 
+    return decrypted_text
+
+def brute_force_decrypt(ciphertext):
+    for key in range(26):
+        decrypted_text = caesar_cipher_decrypt(ciphertext, key)
+        print(f"With key {key}: {decrypted_text}")
+
+def main():
+    ciphertext = input("Enter ciphertext to decrypt: ")
+    print("Brute-force decryption results:")
+    brute_force_decrypt(ciphertext)
+
+if __name__ == "__main__":
+main()
