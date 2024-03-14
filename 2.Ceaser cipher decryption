@@ -1,1 +1,22 @@
-Ceaser cipher decryption
+Ceaser cipher decryptiondef caesar_cipher_decrypt(ciphertext, key):
+decrypted_text = ""
+for char in ciphertext:
+if char.isalpha():  
+if char.islower():
+decrypted_text += chr((ord(char) - ord('a') - key) % 26 + ord('a'))
+else:
+decrypted_text += chr((ord(char) - ord('A') - key) % 26 + ord('A'))
+else:
+decrypted_text += char 
+return decrypted_text
+def main():
+ciphertext = input("Enter text to decrypt: ")
+key = int(input("Enter the decryption key (0-25): "))
+if 0 <= key <= 25:
+decrypted_text = caesar_cipher_decrypt(ciphertext, key)
+print("Decrypted text:", decrypted_text)
+else:
+print("Invalid key. Please enter a key between 0 and 25.")
+if __name__ == "__main__":
+    main()
+
